@@ -38,6 +38,13 @@ import com.android.build.OutputFile
  *   // bundleInPaidRelease: true,
  *   // bundleInBeta: true,
  *
+ *   // whether to disable dev mode in custom build variants (by default only disabled in release)
+ *   // for example: to disable dev mode in the staging build type (if configured)
+ *   devDisabledInStaging: true,
+ *   // The configuration property can be in the following formats
+ *   //         'devDisabledIn${productFlavor}${buildType}'
+ *   //         'devDisabledIn${buildType}'
+ *
  *   // the root of your project, i.e. where "package.json" lives
  *   root: "../../",
  *
@@ -63,12 +70,16 @@ import com.android.build.OutputFile
  *   inputExcludes: ["android/**", "ios/**"],
  *
  *   // override which node gets called and with what additional arguments
- *   nodeExecutableAndArgs: ["node"]
+ *   nodeExecutableAndArgs: ["node"],
  *
  *   // supply additional arguments to the packager
  *   extraPackagerArgs: []
  * ]
  */
+
+project.ext.react = [
+    entryFile: "index.js"
+]
 
 apply from: "../../node_modules/react-native/react.gradle"
 
@@ -100,7 +111,7 @@ android {
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
-        manifestPlaceholders = [onesignal_app_id: "78e8aff3-7ce2-401f-9da0-2d41f287ebaf",
+        manifestPlaceholders = [onesignal_app_id: "16a7fb9c-2f36-4f82-a118-ab44a58f5033",
                                 onesignal_google_project_number: "REMOTE"]
     }
     splits {
@@ -133,6 +144,12 @@ android {
 }
 
 dependencies {
+    compile(project(':react-native-firebase')) {
+        transitive = false
+    }
+    implementation "com.google.android.gms:play-services-base:12.0.0"
+    implementation "com.google.firebase:firebase-core:12.0.0"
+
     compile project(':react-native-onesignal')
     compile fileTree(dir: "libs", include: ["*.jar"])
     compile "com.android.support:appcompat-v7:27.1.0"
@@ -145,3 +162,5 @@ task copyDownloadableDepsToLibs(type: Copy) {
     from configurations.compile
     into 'libs'
 }
+
+apply plugin: 'com.google.gms.google-services'

@@ -1,9 +1,9 @@
 package com.rnonesignal;
 
 import android.app.Application;
-import android.util.Log;
 
 import com.facebook.react.ReactApplication;
+import io.invertase.firebase.RNFirebasePackage;
 import com.geektime.rnonesignalandroid.ReactNativeOneSignalPackage;
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactNativeHost;
@@ -26,8 +26,14 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNFirebasePackage(),
             new ReactNativeOneSignalPackage()
       );
+    }
+
+    @Override
+    protected String getJSMainModuleName() {
+      return "index.android";
     }
   };
 

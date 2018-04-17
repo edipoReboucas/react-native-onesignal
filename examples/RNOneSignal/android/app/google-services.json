@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "442924733701",
+    "firebase_url": "https://onsignalexample-6645e.firebaseio.com",
+    "project_id": "onsignalexample-6645e",
+    "storage_bucket": "onsignalexample-6645e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:442924733701:android:c86364a8ce9e3b0d",
+        "android_client_info": {
+          "package_name": "com.rnonesignal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "442924733701-lsuqdpmh61ho52vkq8ka6pq8tisell6d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvf4ixQ41ka75QcPE80tJmOpIjl5TyHt0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
